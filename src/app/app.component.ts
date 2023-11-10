@@ -51,6 +51,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log("Oninit run");
+    this.getJson();
+    
     this.matchModeOptions = [
       {
         label: 'Starts With',
@@ -76,15 +78,15 @@ export class AppComponent implements OnInit {
   }
 
 
-  public jsonProducts: any;
+  public jsonPost: any;
   constructor(private http: HttpClient, private filterService: FilterService) {
-    this.getJson();
+    
   }
 
 
   public getJson() {
-    this.http.get('https://fakestoreapi.com/products').subscribe(data => {
-      this.jsonProducts = data;
+    this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(data => {
+      this.jsonPost = data;
       // console.log(data);
     });
   }
